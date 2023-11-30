@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Transactions.css';
 import Transaction from './Transaction';
+import { Link } from 'react-router-dom';
 
 
 function Transactions() {
@@ -67,6 +68,7 @@ function Transactions() {
 
   return (
     <div className='flex justify-center items-center flex-col mt-20'>
+      <Link to="/" className="back-button">&#8592; Back</Link>
       <h2>Transactions</h2>
       <p>Balance: ${balance}</p>
       <form className='mr-20 w-50 '>
