@@ -1,6 +1,6 @@
 # Account Opening Application Development
 
-You are tasked with developing a comprehensive account opening application using a technology stack of your choice. The application should cover all aspects, including database management, backend, and frontend development. Users should be able to create an account, log in, perform transactions (credit or debit), and modify their account information.
+eveloping a comprehensive account opening application using a technology stack of your choice. The application should cover all aspects, including database management, backend, and frontend development. Users should be able to create an account, log in, perform transactions (credit or debit), and modify their account information.
 
 ## Task Requirements
 
