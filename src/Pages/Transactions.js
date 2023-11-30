@@ -8,10 +8,10 @@ function Transactions() {
   const [errorMessage, setErrorMessage] = useState()
   const [balance, setBalance] = useState()
   // Fetch the balance of the account on page load
-  // useEffect(() => {
-  //   const storedBalance = JSON.parse(localStorage.getItem('balance')) || [];
-  //   setBalance(storedBalance);
-  // }, []);
+  useEffect(() => {
+    const storedBalance = JSON.parse(localStorage.getItem('balance')) || [];
+    setBalance(storedBalance);
+  }, []);
 
   // Save transactions to local storage whenever transactions state changes
   useEffect(() => {
