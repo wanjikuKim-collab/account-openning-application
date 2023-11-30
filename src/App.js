@@ -1,24 +1,62 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
-import AccountSettings from './Pages/AccountSettings';
+import { ClerkProvider, UserButton, SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+  SignIn,
+  SignUp, } from "@clerk/clerk-react";
 import Home from './Pages/Home';
-import Login from './Pages/Login';
-
-//Auth Imports
-import Register from './Pages/Register';
 import Transactions from './Pages/Transactions';
+ 
+if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
+const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
+ 
 
 function App() {
   return (
-    <div className="App">
+    <ClerkProvider publishableKey={clerkPubKey}>
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/register' element={<Register />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/account_settings' element={<AccountSettings />}></Route>
-        <Route path='/transaction' element={<Transactions />}></Route>
+        <Route path="/" element={
+          <>
+            <SignedIn>
+              <Home />
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+          } />
+     
+        <Route path="/login" element={<SignIn />} />
+        
+        <Route path="/register" element={<SignUp />} />
+
+        <Route path="/transactions" element={
+          <>
+            <SignedIn>
+              <Transactions />
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+          } />
+       
+        <Route path="/account-settings" element={
+          <>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+          } />
       </Routes>
-    </div>
+    </ClerkProvider>
+   
   );
 }
 
