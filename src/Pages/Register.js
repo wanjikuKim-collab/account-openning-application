@@ -10,7 +10,7 @@ function Register() {
 
   // Initialising TE
   initTE({ Select, Stepper });
-  const countyInfo = ["Mombasa", "Kwale", "Kilifi", "Tana River", "Lamu", "Taita/Taveta", "Garissa", "Wajir", "Mandera", "Marsabit", "Isiolo", "Meru", "Tharaka-Nithi", "Embu", "Kitui", "Machakos", "Makueni", "Nyandarua", "Nyeri", "Kirinyaga", "Murang'a", "Kiambu", "Turkana", "West Pokot", "Samburu", "Trans Nzoia", "Uasin Gishu", "Elgeyo/Marakwet", "Nandi", "Baringo", "Laikipia", "Nakuru", "Narok", "Kajiado", "Kericho", "Bomet", "Kakamega", "Vihiga", "Bungoma", "Busia", "Siaya", "Kisumu", "Homa Bay", "Migori", "Kisii", "Nyamira", "Nairobi City"].sort().map((county) => <option key={county} value={county}>{county}</option>)
+  const countyInfo = ["Mombasa", "Kwale", "Kilifi", "Nairobi City"].sort().map((county) => <option key={county} value={county}>{county}</option>)
 
   function handleSignup(e) {
     e.preventDefault();
@@ -27,11 +27,7 @@ function Register() {
         'username',
         'phone_number',
         'email',
-        'date_of_birth',
-        'gender',
-        'password',
-        'location',
-        'avatar_img'
+        'password'  
     ];
 
     formDataFields.forEach((field) => {
@@ -91,82 +87,12 @@ function Register() {
 
             <form onSubmit={handleSignup} className='text-left'>
             <ul
-              data-te-stepper-init
               className="relative m-0 flex list-none justify-between overflow-hidden p-0 transition-[height] duration-200 ease-in-out">
-              {/* <!--First item--> */}
-              <li
-                data-te-stepper-step-ref
-                data-te-stepper-step-active
-                className="w-[4.5rem] flex-auto">
-                <div
-                  data-te-stepper-head-ref
-                  className="flex cursor-pointer items-center pl-2 leading-[1.3rem] no-underline after:ml-2 after:h-px after:w-full after:flex-1 after:bg-[#e0e0e0] after:content-[''] hover:bg-[#f9f9f9] focus:outline-none dark:after:bg-neutral-600 dark:hover:bg-[#3b3b3b]">
-                  <span
-                    data-te-stepper-head-icon-ref
-                    className="my-6 mr-2 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-[#ebedef] text-sm font-medium text-[#40464f]">
-                    1
-                  </span>
-                  <span
-                    data-te-stepper-head-text-ref
-                    className="font-medium text-neutral-200 after:flex after:text-[0.8rem] after:content-[data-content]">
-                    Personal
-                  </span>
-                </div>
-                {/* Personal Details Step */}
-                <div
-                  data-te-stepper-content-ref
-                  className="absolute w-full p-4 transition-all duration-500 ease-in-out">
-                  <p className="font-bold uppercase mb-3 text-lg">Personal Details</p>
-                  <div className='space-y-2 mb-4'>
-                    <div className="space-x-4 flex items-center">
-                      <div>
-                        <label className='block'>Full Name:</label>
-                        <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="full_name" placeholder="Full Name" type="text" required/>
-                      </div>
-                    </div>
-                    
+              <div className='space-y-2'>
                     <div>
-                      <label className='block'>Date of Birth:</label>
-                      <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="date_of_birth"  placeholder="Date of Birth" type="date" required/>
+                      <label className='block'>Full Name:</label>
+                      <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="full_name" placeholder="Full Name" type="text" required/>
                     </div>
-
-                    <div>
-                      <label>Gender:</label>
-                      <div className="block rounded border-0 bg-white w-full h-9 text-blue-dark">
-                        <select name="gender" data-te-select-init data-te-select-placeholder="Select Gender" >
-                          <option value="" hidden selected></option>
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              {/* <!--Second item--> */}
-              <li data-te-stepper-step-ref className="w-[4.5rem] flex-auto">
-                <div
-                  data-te-stepper-head-ref
-                  className="flex cursor-pointer items-center leading-[1.3rem] no-underline before:mr-2 before:h-px before:w-full before:flex-1 before:bg-[#e0e0e0] before:content-[''] after:ml-2 after:h-px after:w-full after:flex-1 after:bg-[#e0e0e0] after:content-[''] hover:bg-[#f9f9f9] focus:outline-none dark:before:bg-neutral-600 dark:after:bg-neutral-600 dark:hover:bg-[#3b3b3b]">
-                  <span
-                    data-te-stepper-head-icon-ref
-                    className="my-6 mr-2 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-[#ebedef] text-sm font-medium text-[#40464f]">
-                    2
-                  </span>
-                  <span
-                    data-te-stepper-head-text-ref
-                    className="text-neutral-200 after:flex after:text-[0.8rem] after:content-[data-content] dark:text-neutral-300">
-                    Contact
-                  </span>
-                </div>
-                {/* Contact Details Step */}
-                <div
-                  data-te-stepper-content-ref
-                  className="absolute left-0 w-full translate-x-[150%] p-4 transition-all duration-500 ease-in-out">
-                  <p className="font-bold uppercase mb-3 text-lg">Contact Information</p>
-                  <div className='space-y-2 mb-4'>                 
                     <div>
                       <label className='block'>Phone number:</label>
                       <PhoneInput
@@ -183,48 +109,10 @@ function Register() {
                         }}
                       />
                     </div>
-
                     <div>
                       <label className='block'>Email Address:</label>
                       <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="email"  placeholder="Email Address" type="email" required/>
                     </div>
-
-                    <div>
-                      <label>County:</label>
-                      <div className="block rounded border-0 bg-white w-full h-9 text-blue-dark">
-                        <select name="location" data-te-select-init data-te-select-filter="true" data-te-select-placeholder="Select County">
-                          <option value="" hidden selected></option>
-                          {countyInfo}
-                        </select>
-                      </div>
-                      
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              {/* <!--Third item--> */}
-              <li data-te-stepper-step-ref className="w-[4.5rem] flex-auto">
-                <div
-                  data-te-stepper-head-ref
-                  className="flex cursor-pointer items-center pr-2 leading-[1.3rem] no-underline before:mr-2 before:h-px before:w-full before:flex-1 before:bg-[#e0e0e0] before:content-[''] hover:bg-[#f9f9f9] focus:outline-none dark:before:bg-neutral-600 dark:after:bg-neutral-600 dark:hover:bg-[#3b3b3b]">
-                  <span
-                    data-te-stepper-head-icon-ref
-                    className="my-6 mr-2 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-[#ebedef] text-sm font-medium text-[#40464f]">
-                    3
-                  </span>
-                  <span
-                    data-te-stepper-head-text-ref
-                    className="text-neutral-200 after:flex after:text-[0.8rem] after:content-[data-content] dark:text-neutral-300">
-                    Account
-                  </span>
-                </div>
-                {/* Account Details Step */}
-                <div
-                  data-te-stepper-content-ref
-                  className="absolute left-0 w-full translate-x-[150%] p-4 transition-all duration-500 ease-in-out">
-                  <p className="font-bold uppercase mb-3 text-lg">Account Details</p>
-                  <div className='space-y-2 mb-4'>
                     <div>
                       <label className='block'>Username:</label>
                       <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="username"  placeholder="Username" type="text" required/>
@@ -234,14 +122,7 @@ function Register() {
                       <label className='block'>Password:</label>
                       <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="password"  placeholder="Password" type="password" required/>
                     </div>
-
-                    <div>
-                      <label className='block'>Profile Picture:</label>
-                      <input className='relative m-0 block w-full min-w-0 flex-auto rounded bg-white bg-clip-padding px-3 py-[0.32rem] text-base font-normal transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none text-blue-dark' name="avatar_img"  placeholder="Enter URL Here" type="file" accept="image"/>
-                    </div>
-                  </div>
-                </div>
-              </li>
+              </div>        
             </ul>
 
               <div className='w-full text-center flex items-center'>
