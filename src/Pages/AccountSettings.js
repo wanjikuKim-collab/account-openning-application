@@ -20,14 +20,14 @@ function AccountSettings() {
         <label>New Password:</label>
         <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
 
-        <button type="button" onClick={handleChangePassword}>
+        <button type="button" className='bg-blue-light' onClick={handleChangePassword}>
           Change Password
         </button>
 
         <label>New Email:</label>
         <input type="email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
 
-        <button type="button" onClick={handleChangeEmail}>
+        <button type="button" className='bg-orange-light' onClick={handleChangeEmail}>
           Change Email
         </button>
       </form>

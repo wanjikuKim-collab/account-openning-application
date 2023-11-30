@@ -23,8 +23,7 @@ function Register() {
 
     const newUsers = new FormData();
     const formDataFields = [
-        'first_name',
-        'last_name',
+        'full_name',
         'username',
         'phone_number',
         'email',
@@ -46,15 +45,13 @@ function Register() {
       }
     });
 
-    // for (const pair of newUsers.entries()) {
-    //   console.log(`${pair[0]}, ${pair[1]}`);
-    // }
+   
     submitData(newUsers);
     e.target.reset();
   }
 
   function submitData(data) {
-    fetch("/applicants", {
+    fetch("http://localhost:5000/users", {
       method: "POST",
       body: data,
     })
@@ -78,7 +75,7 @@ function Register() {
       <div className="flex flew-row space-x-8 py-12 px-32">
         <div className="left-side w-1/2">
           <img
-              src="https://images.unsplash.com/photo-1670272506220-f8332b178148?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+              src="https://media.istockphoto.com/id/488027905/photo/were-rich-no-more-cattle-rustling-for-us.jpg?s=612x612&w=0&k=20&c=DDkrjFOpPBqz1klR7jL6_4Fp5Xb0-B0cCSaW8Ez0J5I="
               alt="Three people sitting outside in a discussion"
               className="rounded-3xl h-full object-cover"
               loading='lazy'
@@ -123,13 +120,8 @@ function Register() {
                   <div className='space-y-2 mb-4'>
                     <div className="space-x-4 flex items-center">
                       <div>
-                        <label className='block'>First Name:</label>
-                        <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="first_name" placeholder="First Name" type="text" required/>
-                      </div>
-
-                      <div>
-                        <label className='block'>Last Name:</label>
-                        <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="last_name"  placeholder="Last Name" type="text" required/>
+                        <label className='block'>Full Name:</label>
+                        <input className='block rounded border-0 bg-white px-3 w-full h-10 text-blue-dark' name="full_name" placeholder="Full Name" type="text" required/>
                       </div>
                     </div>
                     

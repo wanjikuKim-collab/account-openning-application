@@ -24,7 +24,7 @@ const Login = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const url = user.isAdmin ? '/admin_login' : '/login';
+    const url = user.isAdmin ? '/admin_login' : 'http://localhost:5000/users';
     fetch(url, {
       method: 'POST',
       headers: {
@@ -36,6 +36,7 @@ const Login = () => {
     .then((data) => {
       if (data.error) {
         // Unsuccessful Login
+        console.log("this is the user",data)
         Swal.fire({
           icon: "error",
           title: "Login Error",
@@ -49,14 +50,18 @@ const Login = () => {
       } else {
         // Successful Login
         localStorage.setItem('jwt', data.jwt);
-        const userDetails = user.isAdmin ? data.admin : data.user;
+        // const userDetails = user.isAdmin ? data.admin : data.users;
+        const userDetails =  data.username;
+
+
+        console.log("this are the user details",data.username)
         localStorage.setItem('userDetails', JSON.stringify(userDetails));
         user.isAdmin ? localStorage.setItem("userType", "Administrator") : localStorage.setItem("userType", "Applicant");
 
         // alert('Success');
         Swal.fire({
           icon: "success",
-          title: `Welcome ${userDetails.first_name}!`,
+          title: `Welcome ${userDetails.username}!`,
           confirmButtonText: "Continue",
           confirmButtonColor: "#05C7F8"
         }).then(() => {
@@ -73,7 +78,7 @@ const Login = () => {
       <div className="flex flew-row space-x-8 py-12 px-32">
           <div className="left-side w-1/2">
               <img
-                  src="https://plus.unsplash.com/premium_photo-1667516528642-7de33b0a9991?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGJhbmtpbmclMjBhcHB8ZW58MHx8MHx8fDA%3D"
+                  src="https://plus.unsplash.com/premium_photo-1685214580428-7eae1a78e7bc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bG9naW4lMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D"
                   alt="Three people sitting outside in a discussion"
                   className="rounded-3xl h-full object-cover"
               />
@@ -101,7 +106,7 @@ const Login = () => {
                 </div>
                 
 
-                <p className='text-center mt-4'>Don't have an account yet? <a className='underline hover:text-orange-dark' href="/signup">Sign up</a></p>
+                <p className='text-center mt-4'>Don't have an account yet? <a className='underline hover:text-orange-dark' href="/register">Sign up</a></p>
               </form>
             </div>
           </div>
