@@ -1,3 +1,4 @@
+
 # Account Opening Application Development
 
 developing a comprehensive account opening application(frontend) using React and Tailwind. The application should cover all aspects, including database management, backend, and frontend development. Users should be able to create an account, log in, perform transactions (credit or debit), and modify their account information.
